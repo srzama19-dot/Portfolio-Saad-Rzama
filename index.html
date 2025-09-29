@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saad Rzama - Marketing & Digital Strategist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glitch {
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            opacity: 0.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 2px solid #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .section {
+            padding: 120px 5%;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 4rem;
+            text-align: center;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.03);
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-10px);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+
+        .brands-section {
+            background: #0a0a0a;
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .brand-card {
+            background: rgba(255,255,255,0.02);
+            border: 2px solid rgba(255,255,255,0.1);
+            padding: 0;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .brand-card:hover::after {
+            left: 100%;
+        }
+
+        .brand-card:hover {
+            border-color: #fff;
+            transform: scale(1.02);
+        }
+
+        .brand-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .brand-content {
+            padding: 2.5rem;
+        }
+
+        .brand-title {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .brand-description {
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .brand-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 5px;
+            transition: opacity 0.3s ease;
+        }
+
+        .brand-link:hover {
+            opacity: 0.6;
+        }
+
+        .experience-section {
+            background: #000;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: rgba(255,255,255,0.03);
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .timeline-date {
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-description {
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        .skills-section {
+            background: #0a0a0a;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            background: rgba(255,255,255,0.03);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .skill-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contact-section {
+            background: #000;
+            text-align: center;
+        }
+
+        .contact-info {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-item {
+            font-size: 1.3rem;
+            margin: 1.5rem 0;
+            opacity: 0.9;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 3px;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.6;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 900;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        footer {
+            background: #000;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 3rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+                letter-spacing: 4px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .brand-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+                padding-left: 60px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="glitch">SAAD RZAMA</h1>
+            <p class="subtitle">Marketing Strategist</p>
+            <p class="tagline">
+                Transforming brands into digital empires. Creator of viral content, 
+                builder of businesses, architect of engagement.
+            </p>
+            <a href="#contact" class="cta-button">Let's Work Together</a>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="50" viewBox="0 0 30 50">
+                <rect x="5" y="5" width="20" height="40" rx="10" stroke="#fff" stroke-width="2" fill="none"/>
+                <circle cx="15" cy="15" r="3" fill="#fff">
+                    <animate attributeName="cy" from="15" to="30" dur="1.5s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" from="1" to="0" dur="1.5s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section">
+        <h2 class="section-title">Impact en Chiffres</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">15K+</span>
+                <span class="stat-label">TikTok Followers</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">Millions</span>
+                <span class="stat-label">Vues Vidéo</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">2</span>
+                <span class="stat-label">Marques Créées</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Années D'Expertise</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="section brands-section">
+        <h2 class="section-title">Mes Marques</h2>
+        <div class="brand-grid">
+            <div class="brand-card">
+                <div class="brand-image">REPLICA LUXURY</div>
+                <div class="brand-content">
+                    <h3 class="brand-title">Replica Luxury Watch</h3>
+                    <p class="brand-description">
+                        Création et développement d'une marque e-commerce de montres de luxe. 
+                        Stratégie digitale complète incluant SEO, marketing de contenu, et 
+                        optimisation des conversions pour atteindre une audience internationale exigeante.
+                    </p>
+                    <a href="https://replicaluxury.watch/" target="_blank" class="brand-link">Visiter le Site →</a>
+                </div>
+            </div>
+            <div class="brand-card">
+                <div class="brand-image">MAJESTAYE</div>
+                <div class="brand-content">
+                    <h3 class="brand-title">Majestaye</h3>
+                    <p class="brand-description">
+                        Conception et lancement d'une expérience de marque premium. 
+                        De la stratégie de marque à l'implémentation technique, en passant par 
+                        le design UX/UI et les campagnes d'acquisition multicanales.
+                    </p>
+                    <a href="https://majestaye.com/" target="_blank" class="brand-link">Découvrir →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Success -->
+    <section class="section">
+        <h2 class="section-title">Viral Content Creator</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">15K+</span>
+                <span class="stat-label">Followers Organiques</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">Multiple</span>
+                <span class="stat-label">Comptes Gérés</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">Millions</span>
+                <span class="stat-label">De Vues Générées</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">Viral</span>
+                <span class="stat-label">Content Strategy</span>
+            </div>
+        </div>
+        <div style="max-width: 800px; margin: 4rem auto; text-align: center; line-height: 2;">
+            <p style="font-size: 1.2rem; opacity: 0.9;">
+                Spécialiste de la création de contenu viral sur TikTok avec plusieurs comptes 
+                générant plus de 15 000 followers et des vidéos atteignant des millions de vues. 
+                Expertise en storytelling visuel, tendances algorithmiques, et engagement communautaire.
+            </p>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section experience-section">
+        <h2 class="section-title">Expérience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Août 2023 - Déc 2024</div>
+                    <h3 class="timeline-title">Chargé de Communication</h3>
+                    <p class="timeline-company">Mohammed VI Polytechnic University</p>
+                    <p class="timeline-description">
+                        Gestion des réseaux sociaux, coordination du Africa Smart City Forum 2024, 
+                        intelligence concurrentielle, et conception de supports visuels stratégiques.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Mars - Juillet 2023</div>
+                    <h3 class="timeline-title">Junior Project Manager</h3>
+                    <p class="timeline-company">Caprices Festival Morocco</p>
+                    <p class="timeline-description">
+                        Développement de solutions de paiement, coordination avec fournisseurs, 
+                        et gestion complète des activités événementielles.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Juin - Août 2022</div>
+                    <h3 class="timeline-title">Chef de Projet</h3>
+                    <p class="timeline-company">Redwalls Communication</p>
+                    <p class="timeline-description">
+                        Stratégies marketing digital, coordination de campagnes, 
+                        séances shooting, et fidélisation client.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Février - Juin 2022</div>
+                    <h3 class="timeline-title">Digital Marketing Coordinator</h3>
+                    <p class="timeline-company">Continuum Group</p>
+                    <p class="timeline-description">
+                        Création de matériels marketing, gestion e-mailing, coordination BIM AFRICA 2023, 
+                        et rédaction d'éditoriaux avec leaders d'opinion internationaux.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills-section">
+        <h2 class="section-title">Compétences</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <p class="skill-name">Branding</p>
+            </div>
+            <div class="skill-item">
+                <p class="skill-name">SEO</p>
+            </div>
+            <div class="skill-item">
+                <p class="skill-name">Marketing Digital</p>
+            </div>
+            <div class="skill-item">
+                <p class="skill-name">WordPress</p>
+            </div>
+            <div class="skill-item">
+                <p class="skill-name">Content Creation</p>
+            </div>
+            <div class="skill-item">
+                <p class="skill-name">Social Media</p>
+            </div>
+            <div class="skill-item">
+                <p class="skill-name">Power BI</p>
+            </div>
+            <div class="skill-item">
+                <p class="skill-name">Canva</p>
+            </div>
+            <div class="skill-item">
+                <p class="skill-name">E-commerce</p>
+            </div>
+            <div class="skill-item">
+                <p class="skill-name">Video Editing</p>
+            </div>
+            <div class="skill-item">
+                <p class="skill-name">Copywriting</p>
+            </div>
+            <div class="skill-item">
+                <p class="skill-name">Analytics</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <h2 class="section-title">Travaillons Ensemble</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <strong>Email:</strong> <a href="mailto:S.rzama19@gmail.com">S.rzama19@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <strong>Téléphone:</strong> <a href="tel:+212655025377">06 55 02 53 77</a>
+            </div>
+            <div class="contact-item">
+                <strong>Localisation:</strong> Marrakech, Maroc
+            </div>
+        </div>
+        <a href="mailto:S.rzama19@gmail.com" class="cta-button" style="margin-top: 3rem;">Contactez-Moi</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Saad Rzama. Tous droits réservés. Marketing Strategist | Brand Builder | Digital Creator</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-card, .brand-card, .timeline-item, .skill-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
